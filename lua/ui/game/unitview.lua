@@ -551,6 +551,7 @@ function UpdateWindow(info)
                 if blueprint.VetEnabled then
                     local level = unit:GetStat('VetLevel', 0).Value
                     local experience = unit:GetStat('VetExperience', 0).Value
+                    local totalMassKilled = unit:GetStat('VetMassKillCredit', 0).Value
 
                     local progress, title
                     local lowerThreshold, upperThreshold
@@ -590,12 +591,12 @@ function UpdateWindow(info)
                         progress = 1
 
                         local text
-                        if experience >= 1000000 then
-                            text = string.format('%.2fM', experience / 1000000)
-                        elseif experience >= 100000 then
-                            text = string.format('%.0fK', experience / 1000)
-                        elseif experience >= 10000 then
-                            text = string.format('%.1fK', experience / 1000)
+                        if totalMassKilled >= 1000000 then
+                            text = string.format('%.2fM', totalMassKilled / 1000000)
+                        elseif totalMassKilled >= 100000 then
+                            text = string.format('%.0fK', totalMassKilled / 1000)
+                        elseif totalMassKilled >= 10000 then
+                            text = string.format('%.1fK', totalMassKilled / 1000)
                         else
                             text = experience
                         end
